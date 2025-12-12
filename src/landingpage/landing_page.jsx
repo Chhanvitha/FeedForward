@@ -2,19 +2,11 @@ import React from "react";
 import "./landing_page.css";
 import feedLogo from "./Main_logo.png";   
 import heroImg from "./main_view_img.jpg";
-import close_button from "./close_button.png";          
 
 const Landing_page = () => {
   return (
     <div className="landing-container-main">
-      <div className="closing">
-        
-      <img 
-        src={close_button} 
-        alt="floating button" 
-        className="floating-btn"
-      />
-      </div>
+      
       <div className="landing-container">
 
       
