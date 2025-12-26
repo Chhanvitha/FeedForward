@@ -2,16 +2,12 @@ import "../styles/SignIn.css";
 import logo from "../landingpage/Main_logo.png";
 import { useNavigate } from "react-router-dom";
 
-
 const SignIn = ({
   name,
   email,
   password,
   onChange,
   onSubmit,
-  isSignup,
-  setIsSignup,
-  error,
 }) => {
   const navigate = useNavigate();
 
@@ -66,10 +62,7 @@ const SignIn = ({
 
         <p className="signin-footer">
           Already have an account?{" "}
-          <span
-           onClick={() => navigate("/login")}
-          style={{ cursor: "pointer" }}
-          >
+          <span onClick={() => navigate("/login")}>
            login
           </span>
         </p>

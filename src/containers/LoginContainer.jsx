@@ -20,8 +20,13 @@ const LoginContainer = () => {
   const handleSubmit = async () => {
     setError("");
     try {
-      await signInUser(form);
+      const response = await signInUser({
+        email: form.email,
+        password: form.password,
+      });
+
       navigate("/dashboard");
+      return response;
     } catch (err) {
       setError(err.message);
     }

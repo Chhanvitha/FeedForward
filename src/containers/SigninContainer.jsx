@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SignIn from "../components/SignIn";
-import { signUpUser, signInUser } from "../api/authAPI";
-
+import { signUp } from "../api/authAPI";
 
 const SigninContainer = () => {
   const navigate = useNavigate();
@@ -23,12 +22,12 @@ const SigninContainer = () => {
   const handleSubmit = async () => {
     setError("");
     try {
-      if (isSignup) {
-        await signUpUser(form);
-      } else {
-        await signInUser(form);
-      }
-      navigate("/dashboard"); 
+      const response = await signUp({
+        email: form.email,
+        password: form.password,
+        name: form.name,
+      });
+      navigate("/dashboard");
     } catch (err) {
       setError(err.message);
     }

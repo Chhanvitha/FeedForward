@@ -46,9 +46,9 @@ const Login = ({
         </div>
 
         {error && (
-          <p style={{ color: "red", fontSize: "13px", marginTop: "10px" }}>
+          <div className="error-message" style={{ marginTop: "16px" }}>
             {error}
-          </p>
+          </div>
         )}
 
         <button className="signin-btn" onClick={onSubmit}>
@@ -56,10 +56,9 @@ const Login = ({
         </button>
 
         <p className="signin-footer">
-          Don’t have an account? 
+          Don't have an account? 
           <span
            onClick={() => navigate("/signin")}
-          style={{ cursor: "pointer" }}
           >
            signin
           </span>

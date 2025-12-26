@@ -1,13 +1,15 @@
+/* Import Inter Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+  line-height: 1.6;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color-scheme: light;
+  color: #1a1a1a;
+  background-color: #ffffff;
   
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -15,55 +17,66 @@
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
+  font-weight: 600;
+  color: #6f3ff5;
   text-decoration: inherit;
+  transition: color 0.2s ease;
 }
+
 a:hover {
-  color: #535bf2;
+  color: #5a2fd6;
 }
 
 body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 100;
+  min-width: 100%;
   min-height: 100vh;
+  background: linear-gradient(135deg, #f4f2ff 0%, #ffffff 50%, #f9f8ff 100%);
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 button {
-  border-radius: 8px;
+  border-radius: 12px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
-  font-weight: 500;
+  font-weight: 600;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #f9f9f9;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.3s ease;
 }
+
 button:hover {
-  border-color: #646cff;
+  border-color: #6f3ff5;
+  background-color: #f4f2ff;
+  transform: translateY(-1px);
 }
+
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 2px solid #6f3ff5;
+  outline-offset: 2px;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    color: #1a1a1a;
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: #5a2fd6;
   }
   button {
     background-color: #f9f9f9;
   }
 }
+
