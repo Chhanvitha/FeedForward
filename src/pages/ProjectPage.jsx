@@ -4,6 +4,7 @@ import { fetchProjectDetails } from "../api/ProjectPage/fetchProjectDetails.api"
 import "../styles/ProjectPage.css";
 
 import Invite from "../components/ProjectPage/Invite";
+import AssetsTab from "../components/assetsComponents/AssetsTab";
 
 const ProjectPage = () => {
   const [projectDetails, setProjectDetails] = useState(null);
@@ -14,9 +15,10 @@ const ProjectPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  
-  // Check if this is an invited project from URL query parameter
-  const isInvited = new URLSearchParams(location.search).get('invited') === 'true';
+
+  // Check if this is an invited project
+  const isInvited =
+    new URLSearchParams(location.search).get("invited") === "true";
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -89,7 +91,7 @@ const ProjectPage = () => {
         </p>
       </div>
 
-      {/* Only show Invite for projects you own, not for invited projects */}
+      {/* Only show Invite for projects you own */}
       {!isInvited && (
         <div>
           <Invite projectID={id} />
@@ -125,7 +127,11 @@ const ProjectPage = () => {
 
       {/* Tab Content */}
       <div className="tab-content">
-        {activeTab === "assets" && <div className="assets-section"></div>}
+        {activeTab === "assets" && (
+          <div className="assets-section">
+            <AssetsTab projectId={id} />
+          </div>
+        )}
 
         {activeTab === "final" && (
           <div className="final-section">

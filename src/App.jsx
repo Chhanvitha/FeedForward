@@ -6,7 +6,6 @@ import LoginContainer from "./containers/LoginContainer";
 import ProtectedRouter from "./routes/ProtectedRouter";
 import Dashboard from "./pages/Dashboard";
 import ProjectPage from "./pages/ProjectPage";
-import InvitedProjects from "./components/dashboard/InvitedProjects";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +13,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Landing_page /> },
       { path: "/signin", element: <SigninContainer /> },
+      { path: "/login", element: <LoginContainer /> },
       {
         path: "/dashboard",
         element: (
@@ -23,16 +23,12 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/login",
-        element: <LoginContainer />,
-      },
-      {
         path: "/project/:id",
-        element: <ProjectPage />,
-      },
-      {
-        path: "/test",
-        element: <InvitedProjects />,
+        element: (
+          <ProtectedRouter>
+            <ProjectPage />
+          </ProtectedRouter>
+        ),
       },
     ],
   },

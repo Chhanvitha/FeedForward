@@ -14,6 +14,17 @@ const InvitedProjects = () => {
         const token = localStorage.getItem("token");
         const response = await InvitedProjectApi({token});
 
+        console.log("Invited Projects API Response:", response?.data?.data);
+        
+        // Log each project's structure
+        response?.data?.data?.forEach((item, index) => {
+          console.log(`Project ${index}:`, {
+            project_id: item.project_id,
+            projects_id: item.projects?.id,
+            full_item: item
+          });
+        });
+
         setInvitedProjects(response?.data?.data || []);
       } catch (error) {
         console.error(error);
@@ -26,6 +37,11 @@ const InvitedProjects = () => {
   }, []);
 
   const handleCardClick = (projectId) => {
+    console.log("Navigating to project with ID:", projectId);
+    if (!projectId) {
+      console.error("Project ID is undefined!");
+      return;
+    }
     navigate(`/project/${projectId}?invited=true`);
   };
 
@@ -41,24 +57,24 @@ const InvitedProjects = () => {
     <div className="projects-grid">
       {invitedProjects.map((item) => (
         <div 
-          key={item.project_id} 
+          key={item.id || item.project_id} 
           className="project-card"
-          onClick={() => handleCardClick(item.project_id)}
+          onClick={() => handleCardClick(item.id)}
           style={{ cursor: "pointer" }}
         >
           <div className="project-card-header">
-            <h3 className="project-card-title">{item.projects?.name}</h3>
+            <h3 className="project-card-title">{item.name}</h3>
             <span className="project-status status-pending">INVITED</span>
           </div>
           
           <p className="project-description">
-            {item.projects?.description || "No description provided"}
+            {item.description || "No description provided"}
           </p>
           
           <div className="project-client">
             <strong>Deadline:</strong>{" "}
-            {item.projects?.deadline 
-              ? new Date(item.projects.deadline).toLocaleDateString() 
+            {item.deadline 
+              ? new Date(item.deadline).toLocaleDateString() 
               : "Not set"}
           </div>
         </div>
